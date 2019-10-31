@@ -1,0 +1,67 @@
+<p>login works!</p>
+<form #login="ngForm" (ngSubmit)="handleSubmit(login.value)">
+  <div ngModelGroup="persondetails">
+    <label style="color:grey"><b>Username</b>{{ username }}</label
+    ><br />
+    <input
+      type="text"
+      ngModel
+      name="firstName"
+      #username="ngModel"
+      placeholder="Enter Username"
+      minlength="3"
+      maxlength="15"
+      style="border-radius:5px;height: 40px;width: 100%"
+      required
+    /><br />
+    <div
+      *ngIf="username.touched && !username.valid"
+      style="margin-left:0%;width: 500px"
+    >
+      <div *ngIf="username.errors.required">
+        Username is required
+      </div>
+      <p *ngIf="username.errors.minlength">
+        Username minimum length is{{ username.errors.minlength.requiredLength }}
+      </p>
+      <p *ngIf="username.errors.maxlength">
+        Username maximum length is{{ username.errors.maxlength.requiredLength }}
+      </p>
+    </div>
+
+    <label style="color:grey"><b>Password</b></label
+    ><br />
+    <input
+      type="text"
+      ngModel
+      name="firstPassword"
+      #password="ngModel"
+      placeholder="Enter Password"
+      minlength="3"
+      maxlength="15"
+      style="border-radius:5px;height: 40px;width: 100%;"
+      required
+    />
+    <div
+      *ngIf="password.touched && !password.valid"
+      style="margin-left:0%;width: 500px"
+    >
+      <div *ngIf="password.errors.required">
+        Password is required
+      </div>
+      <p *ngIf="password.errors.minlength">
+        Password minimum length is{{ password.errors.minlength.requiredLength }}
+      </p>
+    </div>
+  </div>
+  <br />
+  <button class="btn btn-success" style="width: 100%">
+    Login
+  </button>
+  <label><input type="checkbox" />Remember me</label><br />
+
+  <button class="btn btn-primary" (click)="handleNav()">
+    Register Now
+  </button>
+  <span class="psw" style="float: right">Forgot <a href="#">password?</a></span>
+</form>

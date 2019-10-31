@@ -1,0 +1,59 @@
+<p>signup works!</p>
+<form [formGroup]="myGroup" (ngSubmit)="handleSubmit(myGroup)">
+  <label style="color:grey"><b> Username</b></label
+  ><br />
+  <input
+    type="text"
+    placeholder="Enter Username"
+    formControlName="username"
+    style="border-radius:5px;height: 40px;width: 100%"
+    required
+  /><br />
+  <div *ngIf="myGroup.controls.username.errors?.required">
+    Username is required
+  </div>
+  <label style="color:grey"><b> E-mail Id</b></label
+  ><br />
+  <input
+    type="text"
+    placeholder="Enter E-mail Id"
+    formControlName="mail"
+    style="border-radius:5px;height: 40px;width: 100%"
+    required
+  /><br />
+  <div *ngIf="myGroup.controls.mail.errors?.required">
+    Mail-id is required
+  </div>
+  <label style="color:grey"><b> Create Password</b></label
+  ><br />
+  <input
+    type="text"
+    placeholder="Enter Password"
+    formControlName="password"
+    style="border-radius:5px;height: 40px;width: 100%"
+    required
+  /><br />
+
+  <label style="color:grey"><b> Confirm Password</b></label
+  ><br />
+  <input
+    type="text"
+    placeholder="Re-enter Password"
+    formControlName="anotherpassword"
+    style="border-radius:5px;height: 40px;width: 100%"
+    required
+  /><br />
+
+  <label><input type="checkbox" />Remember me</label><br />
+
+  <button class="btn btn-success">Register</button>
+  <p style="float: right">
+    Already you have an account?<a routerLink="" style="color:dodgerblue"
+      >Login</a
+    >.
+  </p>
+  <div *ngIf="myGroup.touched && myGroup.errors?.mismatch">
+    Password and confirm password mismatch
+  </div>
+  <br /><br />
+</form>
